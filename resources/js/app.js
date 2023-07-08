@@ -4,8 +4,22 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
+import Vue from "vue";
+
+import "./bootstrap";
+import VueRouter from "vue-router";
+
+import App from "./App.vue";
+import VueAxios from "vue-axios";
+import axios from "axios";
+import { routes } from "./routes";
+
+Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
+
+const router = new VueRouter({
+    routes: routes,
+});
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,10 +27,24 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+const app = new Vue({
+    el: "#app",
+    router: router,
+    render: (h) => h(App),
+});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import ExampleComponent from "./components/ExampleComponent.vue";
+
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+import "./app.scss";
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+
+app.component("example-component", ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +64,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount("#app");
