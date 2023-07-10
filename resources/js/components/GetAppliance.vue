@@ -43,6 +43,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -57,7 +58,7 @@ export default {
                     this.appliances = response.data;
                 })
                 .catch((error) => {
-                    console.error(error);
+                    console.error('Erro ao buscaros eletrodomésticos:', error);
                 });
         },
         deleteAppliance(applianceId) {
@@ -69,7 +70,7 @@ export default {
                     );
                 })
                 .catch((error) => {
-                    console.error(error);
+                    console.error('Erro ao remover o eletrodoméstico:', error);
                 });
         },
         editAppliance(appliance) {
