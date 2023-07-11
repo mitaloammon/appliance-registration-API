@@ -22,6 +22,7 @@ const routes = [
         name: "edit",
         path: "/edit/:id",
         component: EditAppliance,
+        props: true,
     },
 ];
 
