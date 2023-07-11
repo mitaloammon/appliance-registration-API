@@ -1,6 +1,6 @@
 require("./bootstrap");
 
-require("./bootstrap");
+import "../css/app.css";
 
 import Vue from "vue";
 import App from "./components/App.vue";
