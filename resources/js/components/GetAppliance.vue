@@ -53,7 +53,7 @@ export default {
     methods: {
         fetchAppliance() {
             this.axios
-                .get("http://localhost:8000/api/appliance")
+                .get("api/appliance")
                 .then((response) => {
                     this.appliances = response.data;
                 })
@@ -63,18 +63,18 @@ export default {
         },
         deleteAppliance(applianceId) {
             this.axios
-                .delete(`http://localhost:8000/api/appliance/${applianceId}`)
+                .delete(`api/appliance/${applianceId}`)
                 .then((response) => {
                     this.appliances = this.appliances.filter(
                         (appliance) => appliance.id !== applianceId
                     );
                 })
                 .catch((error) => {
-                    console.error('Erro ao remover o eletrodoméstico:', error);
+                    console.error('Erro ao remover o Eletrodoméstico:', error);
                 });
         },
         editAppliance(appliance) {
-            this.$router.push(`http://localhost:8000/api/update/${appliance.id}`);
+            this.$router.push(`api/update/${appliance.id}`);
         },
     },
     created() {

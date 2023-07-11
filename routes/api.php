@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplianceController;
 
@@ -15,12 +14,8 @@ use App\Http\Controllers\ApplianceController;
 |
 */
 
-Route::resource('appliance', ApplianceController::class);
+Route::post('/appliance', [ApplianceController::class, 'store']);
+Route::get('/appliance', [ApplianceController::class, 'index']);
 
 Route::put('/update/{id}', [ApplianceController::class, 'update']);
 Route::delete('appliance/{id}', [ApplianceController::class, 'destroy']);
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

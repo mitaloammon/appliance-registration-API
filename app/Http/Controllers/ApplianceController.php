@@ -12,7 +12,12 @@ class ApplianceController extends Controller
      */
     public function index()
     {
-        return appliance::all();
+        try {
+            $appliances = appliance::all();
+            return response()->json($appliances);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to retrieve appliances'], 500);
+        }
     }
 
     /**
@@ -28,7 +33,12 @@ class ApplianceController extends Controller
      */
     public function store(StoreAppliancePost $request)
     {
-        return response(appliance::create($request->all()));
+        try {
+            $appliance = appliance::create($request->all());
+            return response()->json($appliance, 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create appliance'], 500);
+        }
     }
 
     /*
@@ -36,7 +46,12 @@ class ApplianceController extends Controller
      */
     public function show(appliance $id)
     {
-        return appliance::findOrFail($id);
+        try {
+            $appliance = appliance::findOrFail($id);
+            return response()->json($appliance);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Appliance not found'], 404);
+        }
     }
 
     /**
@@ -52,7 +67,13 @@ class ApplianceController extends Controller
      */
     public function update(StoreAppliancePost $request, appliance $id)
     {
-        return response(appliance::find($id)->save($request->all()));
+        try {
+            $appliance = appliance::findOrFail($id);
+            $appliance->update($request->all());
+            return response()->json($appliance);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to update appliance'], 500);
+        }
     }
 
     /**
@@ -60,7 +81,12 @@ class ApplianceController extends Controller
      */
     public function destroy(appliance $id)
     {
-        return $appliance = appliance::findOrFail($id);
-        $appliance->delete();
+        try {
+            $appliance = appliance::findOrFail($id);
+            $appliance->delete();
+            return response()->json(null, 204);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete appliance'], 500);
+        }
     }
 }
