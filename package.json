@@ -3,7 +3,9 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "serve": "vue-cli-service serve",
+        "start": "npm run dev"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
@@ -16,8 +18,9 @@
         "vue": "^3.3.4"
     },
     "dependencies": {
-        "bootstrap-vue": "^2.23.1",
+        "@vue/cli-service": "^5.0.8",
         "routes": "^2.1.0",
-        "vue-axios": "^3.5.2"
+        "vue-axios": "^3.5.2",
+        "vue-router": "^4.2.4"
     }
 }

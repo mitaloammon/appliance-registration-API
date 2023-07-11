@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Vue from "vue";
+import { createApp } from "vue";
 
 import "./bootstrap";
 import VueRouter from "vue-router";
@@ -14,8 +14,8 @@ import VueAxios from "vue-axios";
 import axios from "axios";
 import { routes } from "./routes";
 
-Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
+createApp.use(VueRouter);
+createApp.use(VueAxios, axios);
 
 const router = new VueRouter({
     mode: "history",
@@ -28,7 +28,7 @@ const router = new VueRouter({
  * to use in your application's views. An example is included for you.
  */
 
-const app = new Vue({
+const app = createApp({
     el: "#app",
     router: router,
     render: (h) => h(App),
@@ -36,15 +36,11 @@ const app = new Vue({
 
 import ExampleComponent from "./components/ExampleComponent.vue";
 
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import "./app.scss";
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
+createApp.use(IconsPlugin);
 
 app.component("example-component", ExampleComponent);
 
