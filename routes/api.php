@@ -15,13 +15,11 @@ use App\Http\Controllers\ApplianceController;
 |
 */
 
+Route::resource('appliance', ApplianceController::class);
 
-
-Route::get('/appliance', [ApplianceController::class, 'index']);
-Route::post('/appliance', [ApplianceController::class, 'store']);
-Route::get('/appliance', [ApplianceController::class, 'show']);
 Route::put('/update/{id}', [ApplianceController::class, 'update']);
 Route::delete('appliance/{id}', [ApplianceController::class, 'destroy']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

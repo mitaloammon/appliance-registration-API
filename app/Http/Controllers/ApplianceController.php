@@ -31,7 +31,7 @@ class ApplianceController extends Controller
         return response(appliance::create($request->all()));
     }
 
-    /**
+    /*
      * Display the specified resource.
      */
     public function show(appliance $id)

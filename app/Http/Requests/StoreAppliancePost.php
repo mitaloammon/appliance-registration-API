@@ -26,7 +26,7 @@ class StoreAppliancePost extends FormRequest
             'name' => 'required|integer',
             'voltage' => ['required', Rule::in(['110v', '220v'])],
             'brand_product' => [
-                'required|string', Rule::in(['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG'])
+                'required', Rule::in(['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG'])
             ],
         ];
     }
