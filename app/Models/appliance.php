@@ -10,7 +10,7 @@ class appliance extends Model
 
     protected $table = 'appliances';
 
-    protected $fillable = ['id', 'name', 'description', 'voltage', 'brand_product'];
+    protected $fillable = ['id', 'nome', 'description', 'voltage', 'brand_product'];
 
     protected $guarded = ['id'];
 

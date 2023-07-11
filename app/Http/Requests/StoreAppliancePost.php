@@ -22,7 +22,7 @@ class StoreAppliancePost extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'nome' => 'required',
             'voltage' => 'required|in:110,220',
             'description' => 'required',
             'brand_product' => 'required|in:Electrolux,Brastemp,Fischer,Samsung,LG',
