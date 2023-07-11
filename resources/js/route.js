@@ -2,7 +2,12 @@ import GetAppliance from "./components/CreateAppliance.vue";
 import CreateAppliance from "./components/CreateAppliance.vue";
 import EditAppliance from "./components/EditAppliance.vue";
 
-export const routes = [
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
+
+const routes = [
     {
         name: "home",
         path: "/",
@@ -19,3 +24,10 @@ export const routes = [
         component: EditAppliance,
     },
 ];
+
+const router = new VueRouter({
+    mode: "history",
+    routes,
+});
+
+export default router;

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreAppliancePost extends FormRequest
 {
@@ -23,11 +22,10 @@ class StoreAppliancePost extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|integer',
-            'voltage' => ['required', Rule::in(['110v', '220v'])],
-            'brand_product' => [
-                'required', Rule::in(['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG'])
-            ],
+            'name' => 'required',
+            'voltage' => 'required|in:110,220',
+            'description' => 'required',
+            'brand_product' => 'required|in:Electrolux,Brastemp,Fischer,Samsung,LG',
         ];
     }
 

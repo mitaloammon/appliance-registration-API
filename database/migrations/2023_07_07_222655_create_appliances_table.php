@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appliances', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique()->nullable(false);
+            $table->id();
+            $table->string('nome');
+            $table->enum('voltage', ['110', '220']);
             $table->text('description');
-            $table->unsignedBigInteger('voltage');
-            $table->string('brand_product');
+            $table->enum('brand_product', ['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG']);
             $table->timestamps();
         });
     }
