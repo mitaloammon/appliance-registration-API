@@ -53,7 +53,7 @@ export default {
     methods: {
         fetchAppliance() {
             this.axios
-                .get("/api/appliance")
+                .get("http://localhost:8000/api/appliance")
                 .then((response) => {
                     this.appliances = response.data;
                 })
@@ -63,7 +63,7 @@ export default {
         },
         deleteAppliance(applianceId) {
             this.axios
-                .delete(`/api/appliance/${applianceId}`)
+                .delete(`http://localhost:8000/api/appliance/${applianceId}`)
                 .then((response) => {
                     this.appliances = this.appliances.filter(
                         (appliance) => appliance.id !== applianceId
@@ -74,7 +74,7 @@ export default {
                 });
         },
         editAppliance(appliance) {
-            this.$router.push(`/api/update/${appliance.id}`);
+            this.$router.push(`http://localhost:8000/api/update/${appliance.id}`);
         },
     },
     created() {

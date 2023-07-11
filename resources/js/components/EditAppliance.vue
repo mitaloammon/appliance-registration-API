@@ -44,7 +44,7 @@
     methods: {
       fetchAppliance() {
         const applianceId = this.$route.params.id;
-        axios.get(`/api/appliance/${applianceId}`)
+        axios.get(`http://localhost:8000/api/appliance/${applianceId}`)
           .then(response => {
             this.appliance = response.data;
           })
@@ -53,7 +53,7 @@
           });
       },
       updateAppliance() {
-        axios.put(`/api/appliance/${this.appliance.id}`, this.appliance)
+        axios.put(`http://localhost:8000/api/appliance/${this.appliance.id}`, this.appliance)
           .then(response => {
             this.$router.push('/get-appliance');
           })
