@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('appliances', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('name');
             $table->enum('voltage', ['110', '220']);
             $table->text('description');
             $table->enum('brand_product', ['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG']);
