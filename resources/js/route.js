@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        name: "home",
+        name: "profile",
         path: "/",
         component: GetAppliance,
     },
