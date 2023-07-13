@@ -61,21 +61,9 @@ class EletrodomesticoController extends Controller
      */
     public function update(UpdateEletrodomesticoRequest $request, eletrodomestico $id)
     {
-        try {
-            $eletrodomestico = eletrodomestico::findOrFail($id);
-
-            $eletrodomestico->nome = $request->input('nome');
-            $eletrodomestico->tensao = $request->input('tensao');
-            $eletrodomestico->descricao = $request->input('descricao');
-            $eletrodomestico->marca = $request->input('marca');
-
-            $eletrodomestico->save();
-
-            return response()->json($eletrodomestico);
-        } catch (\Exception $e) {
-            dd($e);
-            return response()->json(['error' => 'Failed to update Eletrodomestico'], 500);
-        }
+        $eletrodomestico = eletrodomestico::find($id);
+        $eletrodomestico->update($request->all());
+        return response()->json('Eletrodomestico atualizado!');
     }
 
     /**

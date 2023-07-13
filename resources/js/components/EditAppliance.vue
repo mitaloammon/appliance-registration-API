@@ -1,18 +1,18 @@
 <template>
     <div>
       <h1>Editar Eletrodoméstico</h1>
-      <form @submit.prevent="updateAppliance">
+      <form @submit.prevent="updateEletrodomestico">
         <div class="form-group">
-          <label for="name">Nome:</label>
-          <input v-model="appliance.name" type="text" id="name" class="form-control" required>
+          <label for="nome">Nome:</label>
+          <input v-model="eletrodomestico.nome" type="text" id="nome" class="form-control" required>
         </div>
         <div class="form-group">
-          <label for="description">Descrição:</label>
-          <textarea v-model="appliance.description" id="description" class="form-control" required></textarea>
+          <label for="descricao">Descrição:</label>
+          <textarea v-model="eletrodomestico.descricao" id="descricao" class="form-control" required></textarea>
         </div>
         <div class="form-group">
             <label>Marca:</label>
-            <select class="form-select" v-model="appliance.brand_product">
+            <select class="form-select" v-model="eletrodomestico.marca">
                 <option selected>Selecione a Marca do Eletrodoméstico</option>
                 <option value="Electrolux">Electrolux</option>
                 <option value="Brastemp">Brastemp</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label>Voltagem:</label>
-            <select class="form-select" v-model="appliance.voltage">
+            <select class="form-select" v-model="appliance.tensao">
                 <option selected>Selecione a voltagem do Eletrodoméstico</option>
                 <option value="220v">220v</option>
                 <option value="110v">110v</option>
@@ -36,34 +36,28 @@
 
   <script>
   export default {
-    data() {
-      return {
-        appliance: {}
-      };
-    },
-    methods: {
-      fetchAppliance() {
-        const applianceId = this.$route.params.id;
-        axios.get(`api/appliance/${applianceId}`)
-          .then(response => {
-            this.appliance = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      },
-      updateAppliance() {
-        axios.put(`api/appliance/${this.appliance.id}`, this.appliance)
-          .then(response => {
-            this.$router.push('/get-appliance');
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
-    },
-    created() {
-      this.fetchAppliance();
+        data() {
+            return {
+                eletrodomestico: {}
+            }
+        },
+        created() {
+            this.axios
+                .get(`http://localhost:8000/api//${this.$route.params.id}`)
+                .then((res) => {
+                    console.log('hello yes');
+                    this.eletrodomestico = res.data;
+                });
+        },
+        methods: {
+            updateEletrodomestico() {
+                this.axios
+                    .patch(`http://localhost:8000/api/eletrodomestico/${this.$route.params.id}`, this.eletrodomestico)
+                    .then((res) => {
+                        this.$router.push({ name: 'home' });
+                    });
+            }
+        }
     }
-  };
   </script>
+eletrodomestico

@@ -13,26 +13,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="appliance in appliances" :key="appliance.id">
-                    <td>{{ appliance.id }}</td>
-                    <td>{{ appliance.name }}</td>
-                    <td>{{ appliance.description }}</td>
-                    <td>{{ appliance.brand_product }}</td>
-                    <td>{{ appliance.voltage }}</td>
+                <tr v-for="eletrodomestico in eletrodomesticos" :key="eletrodomestico.id">
+                    <td>{{ eletrodomestico.id }}</td>
+                    <td>{{ eletrodomestico.name }}</td>
+                    <td>{{ eletrodomestico.description }}</td>
+                    <td>{{ eletrodomestico.brand_product }}</td>
+                    <td>{{ eletrodomestico.voltage }}</td>
                     <td>
-                        <button
-                            @click="editAppliance(appliance)"
-                            class="btn btn-primary"
-                        >
-                            Editar
-                        </button>
-                        <button
-                            @click="deleteAppliance(appliance.id)"
-                            class="btn btn-danger"
-                        >
-                            Deletar
-                        </button>
-                    </td>
+                    <div class="btn-group" role="group">
+                        <router-link :to="{name: 'edit', params: { id: eletrodomestico.id }}" class="btn btn-success">Edit</router-link>
+                        <button class="btn btn-danger" @click="deleteEletrodomestico(eletrodomestico.id)">Delete</button>
+                    </div>
+                </td>
                 </tr>
             </tbody>
         </table>
@@ -45,40 +37,27 @@
 <script>
 
 export default {
-    data() {
-        return {
-            appliances: [],
-        };
-    },
-    methods: {
-        fetchAppliance() {
+        data() {
+            return {
+                eletrodomestico: []
+            }
+        },
+        created() {
             this.axios
-                .get("api/appliance")
-                .then((response) => {
-                    this.appliances = response.data;
-                })
-                .catch((error) => {
-                    console.error('Erro ao buscaros eletrodomésticos:', error);
+                .get('http://localhost:8000/api/eletrodomestico/')
+                .then(response => {
+                    this.eletrodomestico = response.data;
                 });
         },
-        deleteAppliance(applianceId) {
-            this.axios
-                .delete(`api/appliance/${applianceId}`)
-                .then((response) => {
-                    this.appliances = this.appliances.filter(
-                        (appliance) => appliance.id !== applianceId
-                    );
-                })
-                .catch((error) => {
-                    console.error('Erro ao remover o Eletrodoméstico:', error);
-                });
-        },
-        editAppliance(appliance) {
-            this.$router.push(`api/update/${appliance.id}`);
-        },
-    },
-    created() {
-        this.fetchAppliance();
-    },
+        methods: {
+            deleteProduct(id) {
+                this.axios
+                    .delete(`http://localhost:8000/api/eletrodomestico/${id}`)
+                    .then(response => {
+                        let i = this.eletrodomestico.map(data => data.id).indexOf(id);
+                        this.eletrodomestico.splice(i, 1)
+                    });
+            }
+        }
 };
 </script>
