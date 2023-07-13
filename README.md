@@ -16,11 +16,11 @@ Siga as etapas abaixo para configurar o projeto:
 
 -   Clone este repositório para o seu diretório local:
 
-`git clone https://github.com/seu-usuario/cadastro-eletrodomesticos.git`
+`git clone https://github.com/mitaloammon/appliance-registration-API`
 
 -   Acesse o diretório do projeto
 
-`cd cadastro-eletrodomesticos`
+`cd vappliance-registration-API`
 
 -   Rode a linha de comando no seu terminal para instalar as dependências do Laravel.
 
