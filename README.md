@@ -60,7 +60,7 @@ A API possui as seguintes rotas:
 GET /api/eletrodomestico: Retorna todos os registros de eletrodomésticos.
 POST /api/eletrodomestico: Cria um novo registro de eletrodoméstico.
 GET /api/eletrodomestico/{id}: Retorna um registro de eletrodoméstico específico.
-PUT /api/update/{id}: Atualiza um registro de eletrodoméstico existente.
+PUT /api/eletrodomestico/alterar/{id}: Atualiza um registro de eletrodoméstico existente.
 DELETE /api/eletrodomestico/{id}: Remove um registro de eletrodoméstico existente.
 ```
 
