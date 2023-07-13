@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appliances', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->enum('voltage', ['110', '220']);
-            $table->text('description');
-            $table->enum('brand_product', ['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG']);
+        Schema::create('eletrodomestico', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome');
+            $table->enum('tensao', ['110', '220']);
+            $table->text('descricao');
+            $table->enum('marca', ['Electrolux', 'Brastemp', 'Fischer', 'Samsung', 'LG']);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appliances');
+        Schema::dropIfExists('eletrodomestico');
     }
 };

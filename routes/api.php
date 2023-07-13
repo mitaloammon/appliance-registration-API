@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApplianceController;
+use App\Http\Controllers\EletrodomesticoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,8 @@ use App\Http\Controllers\ApplianceController;
 |
 */
 
-Route::post('/appliance', [ApplianceController::class, 'store']);
-Route::get('/appliance', [ApplianceController::class, 'index']);
+Route::post('/eletrodomestico', [EletrodomesticoController::class, 'store']);
+Route::get('/eletrodomestico', [EletrodomesticoController::class, 'index']);
 
-Route::put('/update/{id}', [ApplianceController::class, 'update']);
-Route::delete('appliance/{id}', [ApplianceController::class, 'destroy']);
+Route::put('/eletrodomestico/alterar/{id}', [EletrodomesticoController::class, 'update']);
+Route::delete('/eletrodomestico/{id}', [EletrodomesticoController::class, 'destroy']);
