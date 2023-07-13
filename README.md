@@ -20,7 +20,7 @@ Siga as etapas abaixo para configurar o projeto:
 
 -   Acesse o diretório do projeto
 
-`cd vappliance-registration-API`
+`cd appliance-registration-API`
 
 -   Rode a linha de comando no seu terminal para instalar as dependências do Laravel.
 
