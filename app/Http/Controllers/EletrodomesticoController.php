@@ -19,7 +19,7 @@ class EletrodomesticoController extends Controller
             $eletrodomestico = eletrodomestico::all();
             return response()->json($eletrodomestico);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to retrieve appliances'], 500);
+            return response()->json(['error' => 'Falha ao carregar Eletrodomésticos!'], 500);
         }
     }
 
@@ -40,7 +40,7 @@ class EletrodomesticoController extends Controller
             $eletrodomestico = eletrodomestico::create($request->all());
             return response()->json($eletrodomestico, 201);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to create appliance'], 500);
+            return response()->json(['error' => 'Falha ao criar Eletrodoméstico!'], 500);
         }
     }
 
@@ -53,7 +53,7 @@ class EletrodomesticoController extends Controller
             $eletrodomestico = eletrodomestico::findOrFail($id);
             return response()->json($eletrodomestico);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Appliance not found'], 404);
+            return response()->json(['error' => 'Eletrodoméstico não encontrado!'], 404);
         }
     }
 
