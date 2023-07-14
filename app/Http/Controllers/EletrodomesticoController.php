@@ -63,20 +63,25 @@ class EletrodomesticoController extends Controller
     public function update(UpdateEletrodomesticoRequest $request, eletrodomestico $id)
     {
 
-        $eletrodomestico = eletrodomestico::where('id', request('id'))->first();
+        try {
+            $eletrodomestico = eletrodomestico::where('id', request('id'))->first();
 
-        if ($eletrodomestico !== null) {
-            $eletrodomestico->update(['nome' => request('nome')]);
-            $eletrodomestico->update(['tensao' => request('tensao')]);
-            $eletrodomestico->update(['descricao' => request('descricao')]);
-            $eletrodomestico->update(['marca' => request('marca')]);
-        } else {
-            $eletrodomestico = eletrodomestico::create([
-                'nome' => request('nome'),
-                'tensao' => request('tensao'),
-                'descricao' => request('descricao'),
-                'marca' => request('marca'),
-            ]);
+            if ($eletrodomestico !== null) {
+                $eletrodomestico->update(['nome' => request('nome')]);
+                $eletrodomestico->update(['tensao' => request('tensao')]);
+                $eletrodomestico->update(['descricao' => request('descricao')]);
+                $eletrodomestico->update(['marca' => request('marca')]);
+            } else {
+                $eletrodomestico = eletrodomestico::create([
+                    'nome' => request('nome'),
+                    'tensao' => request('tensao'),
+                    'descricao' => request('descricao'),
+                    'marca' => request('marca'),
+                ]);
+            }
+            return response()->json(['message' => 'Eletrodoméstico atualizado com sucesso!']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Falha ao atualizar dados!'], 500);
         }
     }
 
