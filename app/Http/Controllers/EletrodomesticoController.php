@@ -6,6 +6,7 @@ use App\Models\eletrodomestico;
 use App\Http\Requests\StoreEletrodomesticoPost;
 use App\Http\Requests\UpdateEletrodomesticoRequest;
 
+use function PHPSTORM_META\elementType;
 
 class EletrodomesticoController extends Controller
 {
@@ -61,9 +62,22 @@ class EletrodomesticoController extends Controller
      */
     public function update(UpdateEletrodomesticoRequest $request, eletrodomestico $id)
     {
-        $eletrodomestico = eletrodomestico::find($id);
-        $eletrodomestico->update($request->all());
-        return response()->json('Eletrodomestico atualizado!');
+
+        $eletrodomestico = eletrodomestico::where('id', request('id'))->first();
+
+        if ($eletrodomestico !== null) {
+            $eletrodomestico->update(['nome' => request('nome')]);
+            $eletrodomestico->update(['tensao' => request('tensao')]);
+            $eletrodomestico->update(['descricao' => request('descricao')]);
+            $eletrodomestico->update(['marca' => request('marca')]);
+        } else {
+            $eletrodomestico = eletrodomestico::create([
+                'nome' => request('nome'),
+                'tensao' => request('tensao'),
+                'descricao' => request('descricao'),
+                'marca' => request('marca'),
+            ]);
+        }
     }
 
     /**
